@@ -1,4 +1,4 @@
-package com.thalesgroup.training.springboot;
+package com.thalesgroup.training.springboot.web;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/")
-public class WelcomeController {
+public class QuestionsController {
 
   @RequestMapping(method = RequestMethod.GET)
-  public String welcome() {
+  public String questions() {
     return "Welcome";
   }
 }
