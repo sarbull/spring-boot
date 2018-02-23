@@ -15,19 +15,17 @@ public class QuestionService {
   @Autowired
   private QuestionDAO dao;
 
-  public QuestionService() {
-  }
+  public QuestionService() {}
 
   public Question[] getAll() {
     return this.dao.getAll();
   }
 
+  public Question findById(int id) {
+    return dao.get(id);
+  }
+
   public void createQuestions(int size) {
-
-
-    System.out.println("DAO ===============");
-    System.out.println(dao);
-
     for(int i = 0; i <= size; i++) {
       this.dao.create(new Question("Question " + i, true));
     }
