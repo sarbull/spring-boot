@@ -1,5 +1,6 @@
 package com.thalesgroup.training.springboot.dao;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +12,7 @@ import com.thalesgroup.training.springboot.bean.Question;
 public class QuestionDAO implements DAO<Question> {
 
   private static Map<Integer, Question> map = new HashMap<>();
-  private static int sequence = 0;
+  private static int sequence = 1;
 
   @Override
   public void create(Question t) {
@@ -26,7 +27,7 @@ public class QuestionDAO implements DAO<Question> {
 
   @Override
   public void delete(Integer id) {
-    map.remove(get(id));
+    map.remove(id);
   }
 
   @Override

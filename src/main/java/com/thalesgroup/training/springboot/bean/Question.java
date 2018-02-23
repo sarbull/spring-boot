@@ -6,6 +6,14 @@ public class Question extends Entity {
   private String question;
   private boolean correctAnswer;
 
+  @Override
+  public String toString() {
+    return "Question{" +
+        "question='" + question + '\'' +
+        ", correctAnswer=" + correctAnswer +
+        '}';
+  }
+
   public Question() {}
 
   public Question(String question, boolean correctAnswer) {

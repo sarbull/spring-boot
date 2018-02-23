@@ -30,7 +30,7 @@ public class QuestionService {
   }
 
   public void createQuestions(int size) {
-    for(int i = 0; i <= size; i++) {
+    for(int i = 1; i <= size; i++) {
       this.dao.create(new Question("Question " + i, true));
     }
   }
