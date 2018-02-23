@@ -25,6 +25,10 @@ public class QuestionService {
     return dao.get(id);
   }
 
+  public void deleteWithId(int id) {
+    dao.delete(id);
+  }
+
   public void createQuestions(int size) {
     for(int i = 0; i <= size; i++) {
       this.dao.create(new Question("Question " + i, true));
