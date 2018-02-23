@@ -6,6 +6,8 @@ public class Question extends Entity {
   private String question;
   private boolean correctAnswer;
 
+  public Question() {}
+
   public Question(String question, boolean correctAnswer) {
     super();
 

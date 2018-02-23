@@ -7,11 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import com.thalesgroup.training.springboot.bean.Question;
 
-@Repository("map")
+@Repository
 public class QuestionDAO implements DAO<Question> {
 
   private static Map<Integer, Question> map = new HashMap<>();
-  private static int sequence;
+  private static int sequence = 0;
 
   @Override
   public void create(Question t) {

@@ -2,25 +2,32 @@ package com.thalesgroup.training.springboot.service;
 
 import java.io.PrintStream;
 import java.util.Arrays;
+
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.thalesgroup.training.springboot.bean.Question;
-import com.thalesgroup.training.springboot.dao.DAO;
+import com.thalesgroup.training.springboot.dao.QuestionDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class QuestionService {
-  private DAO<Question> dao;
-  private PrintStream ps = System.out;
 
-  public QuestionService(DAO<Question> dao, PrintStream ps) {
-    super();
+  @Autowired
+  private QuestionDAO dao;
 
-    this.dao = dao;
-    this.ps = ps;
+  public QuestionService() {
+  }
 
-    this.createQuestions(10);
+  public Question[] getAll() {
+    return this.dao.getAll();
   }
 
   public void createQuestions(int size) {
+
+
+    System.out.println("DAO ===============");
+    System.out.println(dao);
+
     for(int i = 0; i <= size; i++) {
       this.dao.create(new Question("Question " + i, true));
     }
@@ -28,10 +35,5 @@ public class QuestionService {
 
   public Question[] getQuestions() {
     return this.dao.getAll();
-  }
-
-  public void printAll() {
-
-    ps.println(Arrays.asList(dao.getAll()));
   }
 }
