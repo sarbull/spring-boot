@@ -2,6 +2,7 @@ package com.thalesgroup.training.springboot.web;
 
 import com.thalesgroup.training.springboot.bean.Question;
 import com.thalesgroup.training.springboot.service.QuestionService;
+//import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/questions")
 public class QuestionsController {
 
+//  Logger logger = Logger.getLogger(QuestionsController.class);
+
   @Autowired
   private QuestionService qs;
 
   @RequestMapping(method = RequestMethod.GET)
   public Question[] questions() {
+//    logger.info("questions() has been called!");
+
     return qs.getAll();
   }
 
