@@ -1,8 +1,11 @@
 package com.thalesgroup.training.springboot.bean;
 
-public class Question extends Entity {
+import javax.persistence.Entity;
+import javax.transaction.Transactional;
 
-  private static final long serialVersionUID = 1L;
+@Entity
+public class Question extends BaseEntity {
+
   private String question;
   private boolean correctAnswer;
 

@@ -1,15 +1,13 @@
 package com.thalesgroup.training.springboot.rest;
 
 import com.thalesgroup.training.springboot.bean.Question;
+import com.thalesgroup.training.springboot.repository.QuestionRepository;
 import com.thalesgroup.training.springboot.service.QuestionService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/questions")
@@ -20,22 +18,38 @@ public class QuestionsController {
   @Autowired
   private QuestionService qs;
 
+  @Autowired
+  private QuestionRepository qr;
+
   @RequestMapping(method = RequestMethod.GET)
   public Question[] questions() {
-    logger.info("questions() has been called!");
+    // return qs.getAll();
 
-    return qs.getAll();
+    return qr.getAll();
+  }
+
+
+  @RequestMapping(method = RequestMethod.POST)
+  public ResponseEntity createQuestion(@RequestBody Question q) {
+    // return qs.getAll();
+    qr.create(q);
+
+    return new ResponseEntity(HttpStatus.CREATED);
   }
 
   @RequestMapping(value="/{id}", method = RequestMethod.GET)
   public Question question(@PathVariable("id") int id) {
-    return qs.findById(id);
+    // return qs.findById(id);
+
+    return qr.get(id);
   }
 
   @RequestMapping(value="/{id}", method = RequestMethod.DELETE)
   public ResponseEntity deleteQuestion(@PathVariable("id") int id) {
     // TODO: treat scenario for multiple deletion
-    qs.deleteWithId(id);
+    // qs.deleteWithId(id);
+
+    qr.delete(id);
 
     return new ResponseEntity(HttpStatus.NO_CONTENT);
   }
