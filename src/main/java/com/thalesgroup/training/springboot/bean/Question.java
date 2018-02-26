@@ -1,7 +1,6 @@
 package com.thalesgroup.training.springboot.bean;
 
 import javax.persistence.Entity;
-import javax.transaction.Transactional;
 
 @Entity
 public class Question extends BaseEntity {
